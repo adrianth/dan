@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #1d140e;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: "Press Start 2P", monospace;
+  color: #fff;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+#stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  touch-action: none;
+}
+
+#controls {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px 14px;
+}
+
+#lever {
+  width: 100%;
+  max-width: 400px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 3px solid #3b2a10;
+  border-radius: 14px;
+  background: linear-gradient(#f6d98a, #d4a347 45%, #8e6a24);
+  box-shadow: 0 6px 0 #3b2a10, inset 0 2px 0 rgba(255, 255, 255, 0.55);
+  color: #3b2a10;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+  transition: transform 0.05s, box-shadow 0.05s;
+}
+
+#lever.pressed {
+  transform: translateY(5px);
+  box-shadow: 0 1px 0 #3b2a10, inset 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+#lever .knob {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #3b2a10;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff9a8a, #c0201a 60%, #6a0f0a);
+}
+
+#lever.pressed .knob {
+  transform: translateY(2px) scale(0.92);
+}
+
+#rotate {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #1d140e;
+  color: #f5c542;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  #rotate {
+    display: flex;
+  }
+}
